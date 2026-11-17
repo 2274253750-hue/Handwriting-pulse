@@ -1,7 +1,7 @@
 {
   "name": "ink-pulse",
   "version": "1.0.0",
-  "description": "安卓手写草稿纸，按笔记录触点坐标与时间，显示采样诊断并导出 JSON。",
+  "description": "��׿��д�ݸ�ֽ�����ʼ�¼����������ʱ�䣬��ʾ������ϲ����� JSON��",
   "license": "MIT",
   "private": true,
   "main": "index.ts",
@@ -15,8 +15,8 @@
   },
   "dependencies": {
     "@shopify/react-native-skia": "2.14.0",
-    "expo": "58.0.25",
-    "expo-file-system": "~58.0.13",
+    "expo": "58.0.26",
+    "expo-file-system": "~58.0.14",
     "react": "19.3.0",
     "react-native": "0.88.1",
     "react-native-gesture-handler": "~3.3.0",
