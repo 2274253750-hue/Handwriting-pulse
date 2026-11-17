@@ -1,7 +1,7 @@
 {
   "name": "ink-pulse",
   "version": "1.0.0",
-  "description": "��׿��д�ݸ�ֽ�����ʼ�¼����������ʱ�䣬��ʾ������ϲ����� JSON��",
+  "description": "安卓手写草稿纸，按笔记录触点坐标与时间，显示采样诊断并导出 JSON。",
   "license": "MIT",
   "private": true,
   "main": "index.ts",
