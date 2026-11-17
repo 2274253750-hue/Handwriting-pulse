@@ -1,67 +1,32 @@
-# 贡献指南
+# 参与开发笔迹脉搏
 
-感谢你愿意为 Handwriting-pulse 做出贡献！
+笔迹脉搏是一个 Android 手写采集应用。复现和验证交互问题时，请使用与项目 Expo SDK 兼容的 Expo Go。安装和启动步骤见[项目说明](README.md)。
 
-## 报告问题
+## 报告问题或建议
 
-- 提交前请先搜索 [已有 Issue](https://github.com/lazytype666/Handwriting-pulse/issues)，避免重复。
-- 使用仓库提供的 Issue 模板：
-  - **Bug 报告**：描述问题、复现步骤、期望行为与环境信息。
-  - **功能建议**：说明使用场景与期望效果。
-- 请勿在 Issue 中粘贴密码、Token 等敏感信息。
+先在[已有 Issue](https://github.com/lazytype666/Handwriting-pulse/issues) 中查找相同现象。报告问题时写明设备、输入方式和可复现的动作，例如“在画布上轻点，再画一条短线，然后导出”。如果涉及采样，附上当时的“近 1 秒”和“点间隔”读数即可。若需要示例笔迹，可以画圆或直线，避免公开姓名和签名。提功能建议时，说明具体使用场景以及希望看到的结果。
 
-## 提交代码
+## 定位改动
 
-1. 从 `main` 创建功能分支，不要直接在主分支上开发：
+| 需要修改的行为 | 对应位置 |
+| --- | --- |
+| 触摸处理、笔迹绘制与采样诊断计算 | `src/capture/` |
+| JSON 文件写入与 Android 文件夹选择 | `src/export/` |
+| 诊断面板与导出结果弹窗 | `src/ui/` |
+| 画布、诊断和导出按钮之间的交互 | `App.tsx` |
 
-   ```bash
-   git checkout main
-   git pull origin main
-   git checkout -b feature/your-feature-name
-   ```
+## 验证改动
 
-2. 分支命名约定：
+首次在仓库根目录运行 `npm install`。修改 TypeScript 后运行 `npm run typecheck`。涉及交互时，通过 `npm start` 启动项目，在 Android 设备上验证受影响的步骤。可以按改动范围选用以下用例。
 
-   | 前缀 | 用途 | 示例 |
-   | --- | --- | --- |
-   | `feature/` | 新功能 | `feature/export-pdf` |
-   | `fix/` | 缺陷修复 | `fix/login-error` |
-   | `docs/` | 文档修改 | `docs/update-readme` |
-   | `refactor/` | 代码重构 | `refactor/cleanup-api` |
+- **采集与绘制**　在空白画布上轻点一下，抬手后画一条短线。导出时应显示 2 笔，JSON 中应有两个独立的 `strokes` 元素。
+- **采样诊断**　持续画圈，观察“近 1 秒”的点数。抬手并等待超过一秒后，该读数应回到 0。隐藏和重新显示诊断面板后应能继续书写。
+- **文件导出**　点“导出”，核对弹窗的笔数、采样点数与 JSON 的 `meta.strokeCount`、`meta.pointCount`。点“另存到手机文件夹”，选择可写目录后检查副本。也可以取消选择，确认原文件仍在应用文档目录。
 
-3. 提交信息请使用 [Conventional Commits](https://www.conventionalcommits.org/zh-hans/) 格式：
+## 提交与合并
 
-   ```
-   <type>(<scope>): <subject>
-   ```
+从最新的 `main` 创建分支。沿用 `feature/`、`fix/`、`docs/` 或 `refactor/` 前缀，例如 `fix/export-copy`。每个 PR 聚焦一个问题，目标分支选择 `main`。仓库使用 Squash merge。
 
-   常用 type：`feat`、`fix`、`docs`、`style`、`refactor`、`test`、`chore`。
+提交信息沿用 Conventional Commits 格式，例如 `fix(export): 修复另存时的错误提示`。请在 PR 中用中文说明改动，列出实际运行的命令或设备上观察到的结果。笔迹导出文件、依赖目录和本地构建产物请留在本机。
 
-4. 推送分支并发起 Pull Request：
-
-   ```bash
-   git push -u origin feature/your-feature-name
-   ```
-
-## Pull Request 规范
-
-- 填写 PR 模板中的检查清单。
-- 一个 PR 只做一件事，避免混合无关改动。
-- 提交前请自行测试，确保不破坏现有功能。
-- 本仓库只允许 **Squash merge**，合并后源分支会自动删除。
-- 合并后请删除本地已合并分支：
-
-  ```bash
-  git checkout main
-  git pull origin main
-  git branch -d feature/your-feature-name
-  ```
-
-## 代码风格
-
-- 遵循项目现有的代码风格与目录结构。
-- 不要提交构建产物、依赖目录或本地配置文件，相关规则见 `.gitignore`。
-
-## 许可证
-
-提交代码即表示你同意以本仓库的 [MIT 许可证](LICENSE) 授权你的贡献。
+贡献遵循仓库的 [MIT 许可证](LICENSE)。

@@ -2,6 +2,7 @@
   "expo": {
     "name": "笔迹脉搏",
     "slug": "ink-pulse",
+    "description": "在安卓画布上用手指或手写笔书写，查看最近一秒的采样点数，并将笔迹导出为 JSON 文件。",
     "version": "1.0.0",
     "platforms": ["android"],
     "orientation": "default",

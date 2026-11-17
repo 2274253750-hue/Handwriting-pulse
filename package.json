@@ -1,8 +1,13 @@
 {
   "name": "ink-pulse",
   "version": "1.0.0",
+  "description": "安卓手写草稿纸，按笔记录触点坐标与时间，显示采样诊断并导出 JSON。",
+  "license": "MIT",
   "private": true,
   "main": "index.ts",
+  "engines": {
+    "node": "^22.13.0 || ^24.3.0 || >=26.0.0"
+  },
   "scripts": {
     "start": "expo start --go",
     "android": "expo start --go --android",

@@ -1,49 +1,39 @@
-# ---- 操作系统 ----
+# 操作系统与编辑器
 .DS_Store
 Thumbs.db
 desktop.ini
-
-# ---- 编辑器 / IDE ----
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
 
-# ---- 环境变量与密钥 ----
+# 本地环境与签名文件
 .env
 .env.*
 !.env.example
 *.pem
 *.key
+*.jks
+*.keystore
 
-# ---- 日志与临时文件 ----
+# npm、Expo 与 TypeScript 生成的文件
+node_modules/
+/package-lock.json
+.expo/
+*.tsbuildinfo
+dist/
+build/
+*.apk
+*.aab
+
+# 手机导出的笔迹及尚未写完的副本
+inkpulse-????-??-??T*.json
+inkpulse-????-??-??T*.json.part
+
+# 日志与临时目录
 *.log
 logs/
 tmp/
 temp/
 *.tmp
-
-# ---- 依赖 ----
-node_modules/
-venv/
-.venv/
-env/
-__pycache__/
-*.py[cod]
-.mypy_cache/
-.pytest_cache/
-.ruff_cache/
-
-# ---- 构建产物 ----
-dist/
-build/
-*.egg-info/
-target/
-out/
-*.class
-
-# ---- 数据库 / 本地缓存 ----
-*.sqlite
-*.sqlite3
-*.db
